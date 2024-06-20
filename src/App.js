@@ -1,11 +1,16 @@
-import './Components/Registration/login.css';
+// import './Components/Registration/login.css';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './Assets/Css/Common.css';
+import './Assets/Css/login.css';
+import './Assets/Css/Style.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Components/Registration/Login";
 import Forgot from "./Components/Registration/Forgetpassword";
 import Signup from './Components/Registration/Signup';
-// import dashboardpages from './Components/Dasboard/Leftsidebar';
-import Leftsidebar from './Components/Dasboard/Leftsidebar';
+import Dashboard from './Components/Dasboard/Dashboard';
+
 
 function App() {
   return (
@@ -15,8 +20,9 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route path="/forgot" element={<Forgot />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/leftsidebar" element={<Leftsidebar />} />
+        <Route path="/Dashboard" element={ <Dashboard />} />
       </Routes>
+      <ToastContainer />
       </BrowserRouter>
     </div>
   );

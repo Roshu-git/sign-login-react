@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logleftimg from '../../Images/login/logimg.png';
-import logo from '../../Images/Logo.png';
-import axios from 'axios';
-import leftimg1 from '../../Images/login/Event.png';
-import leftimg2 from '../../Images/login/Hotel.png';
-import leftimg3 from '../../Images/login/Ticket_iocn.png';
-import leftimg4 from '../../Images/login/Travel_bg.png';
 import { toast } from 'react-toastify';
+import logleftimg from '../../Assets/Images/login/logimg.png';
+import logo from '../../Assets/Images/Logo.png';
+import leftimg1 from '../../Assets/Images/login/Event.png';
+import leftimg2 from '../../Assets/Images/login/Hotel.png';
+import leftimg3 from '../../Assets/Images/login/Ticket_iocn.png';
+import leftimg4 from '../../Assets/Images/login/Travel_bg.png';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -52,13 +51,21 @@ export default function Login() {
                 fetch("https://plrfunnels.in/home/loginAPI", requestOptions)
                 .then((response) => response.text())
                 .then((result) => {console.log("result", result);
-                navigate('/Leftsidebar')}
-                // if(result.status === 0){
-                //     console.log("sucess");
-                // }
-                // else{
-                //     console.log("unsucess");
-                // }
+                const resarray = JSON.parse(result);
+                console.log("array response:",resarray);
+                console.log("status value:", resarray.status);
+
+                if(resarray.status === 0){
+                    console.error("login fail...");
+                    toast("Login Failed.", { onClose: () => navigate('/login')});
+                }
+                else if(resarray.status === 1){
+                    console.log("sucess");
+                    toast.success("Login succefully",{
+                        onClose: ()=> navigate('/Dashboard')
+                    });
+                }
+            }
                 )
                 .catch((error) => console.error(error))
                

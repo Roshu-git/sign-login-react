@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
-import { Link , useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-
-import logleftimg from '../../Images/login/logimg.png';
-import logo from '../../Images/Logo.png';
-import leftimg1 from '../../Images/login/Event.png';
-import leftimg2 from '../../Images/login/Hotel.png';
-import leftimg3 from '../../Images/login/Ticket_iocn.png';
-import leftimg4 from '../../Images/login/Travel_bg.png';
+import { Link , json, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import logleftimg from '../../Assets/Images/login/logimg.png';
+import logo from '../../Assets/Images/Logo.png';
+import leftimg1 from '../../Assets/Images/login/Event.png';
+import leftimg2 from '../../Assets/Images/login/Hotel.png';
+import leftimg3 from '../../Assets/Images/login/Ticket_iocn.png';
+import leftimg4 from '../../Assets/Images/login/Travel_bg.png';
 
 export default function Login() {
     const navigate = useNavigate();
@@ -47,14 +46,12 @@ export default function Login() {
         if(!formData.password){
             newErrors.password = 'password is required.';
         }
-        // if(formData.password !== formData.cpassword){
-        //     newErrors.cpassword = 'password not match.';
-        // }
         if(Object.keys(newErrors).length > 0){
             setErrors(newErrors);
         }else {
             console.log("before fetch",formData);
             const formDataToSend = new FormData();
+            // const resarr;
 
             // Append form data to FormData object
             formDataToSend.append("email", formData.email);
@@ -70,19 +67,28 @@ export default function Login() {
 
               fetch("https://plrfunnels.in/home/signupAPI", requestOptions)
                 .then((response) => response.text())
-                .then((result) => 
-                    console.log("Succesfully login",result),
-                    toast('Registerd Succefully'),
-                    <ToastContainer />,
-                    navigate('/login')
-                )
-                .catch((error) => 
-                    console.error("login Failed",error),
-                toast('login failed'),
-                <ToastContainer />
-            );
+                .then((result) => {
+                    console.log("Succesfully login",result);
+                    const resarr = JSON.parse(result);
+
+                    // console.log("status value",(JSON.parse(result)).status),
+                    if(resarr.status === 1){
+                        toast.success("signup succefully",{
+                            onClose: ()=> navigate('/login')
+                        });
+                    }
+                    else{
+                        toast.error("signup failed" + (resarr.message || "unknown error"));
+                    }
+                })
+                    // navigate('/login')
+                .catch((error) => {
+                    console.error("sign Failed",error);
+                    toast.error("signup Failed.", { onClose: () => navigate ('/signup')
+                    });
+                });
         }
-    };
+    }
     return(
     <div className="bk_login_wrapper">
         <div className="bk_login_limg">

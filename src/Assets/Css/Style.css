@@ -1,0 +1,95 @@
+/* dashboard css start */
+.bh_dashboard_wrapper{
+    position: relative;
+    overflow: hidden;
+}
+.bh_sidebar_wrapper{
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: var(--bk-white-color);
+    box-shadow: 4px 4px 32px 0 #00000008;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: all .5s linear;
+}
+.bh_home_wrapper{
+  position: relative;
+  margin-left: 250px;  
+}
+.bh_logo_wrapper{
+    max-width: 200px;
+    max-height: 80px;
+    padding: 17px;
+    margin-bottom: 25px;
+}
+.bh_menu_wrapper{
+    overflow: auto;
+    margin-bottom: 10px;
+}
+.bh_menu_wrapper ul li a{
+    height: 50px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    gap: 25px;
+    font-size: 14px;
+    color: var(--bk-title-color);
+    position: relative;
+}
+.bh_menu_wrapper ul li a::before{
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 4px;
+    height: 50px;
+    background-color: var(--bk-primary-color);
+    opacity: 0;
+    visibility: hidden;
+}
+.bh_menu_wrapper ul li a:hover, .bh_menu_wrapper ul li.active a{
+    color: var(--bk-primary-color);
+    background-color: rgb(221 16 71 / 15%);
+}
+.bh_menu_wrapper ul li a:hover::before, .bh_menu_wrapper ul li.active a::before{
+    opacity: 1; 
+    visibility: visible;
+}
+.demo_note{
+    padding: 10px;
+    background-color: rgb(221 16 71 / 15%);
+    position: relative;
+    border-bottom: 1px solid #fbfaff;
+    margin-left: 250px;
+    box-shadow: 4px 4px 32px 0 #00000008;
+}
+.demo_note p{
+    color: var(--bk-primary-color);
+    font-size: 16px;
+    text-align: center;
+    /* position: relative; */
+
+}
+.bh_title_wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+.bh_profile_wrap{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bh_profile_img img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  max-width: 60px;
+  min-width: 60px;
+  max-height: 100%;
+}

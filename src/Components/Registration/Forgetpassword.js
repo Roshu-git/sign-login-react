@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logleftimg from '../../Images/login/logimg.png';
-import logo from '../../Images/Logo.png';
-import leftimg1 from '../../Images/login/Event.png';
-import leftimg2 from '../../Images/login/Hotel.png';
-import leftimg3 from '../../Images/login/Ticket_iocn.png';
-import leftimg4 from '../../Images/login/Travel_bg.png';
+import logleftimg from '../../Assets/Images/login/logimg.png';
+import logo from '../../Assets/Images/Logo.png';
+import leftimg1 from '../../Assets/Images/login/Event.png';
+import leftimg2 from '../../Assets/Images/login/Hotel.png';
+import leftimg3 from '../../Assets/Images/login/Ticket_iocn.png';
+import leftimg4 from '../../Assets/Images/login/Travel_bg.png';
 
 export default function Forgetpassword() {
     return(
